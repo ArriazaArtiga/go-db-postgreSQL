@@ -6,12 +6,10 @@ package main
 	"github.com/ArriazaArtiga/go-db-postgreSQL/DetalleFacturas"
 	"github.com/ArriazaArtiga/go-db-postgreSQL/EncabezadoFacturas"
 */
-import (
-	"fmt"
-)
+import "github.com/ArriazaArtiga/go-db-postgreSQL/Storage"
 
 func main() {
-	fmt.Print("Hola")
+	Storage.NewPostgresDB()
 }
 
 //Para subir nuestro proyecto a github
