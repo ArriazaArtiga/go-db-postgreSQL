@@ -6,10 +6,21 @@ package main
 	"github.com/ArriazaArtiga/go-db-postgreSQL/DetalleFacturas"
 	"github.com/ArriazaArtiga/go-db-postgreSQL/EncabezadoFacturas"
 */
-import "github.com/ArriazaArtiga/go-db-postgreSQL/Storage"
+import (
+	"log"
+
+	"github.com/ArriazaArtiga/go-db-postgreSQL/Productos"
+	"github.com/ArriazaArtiga/go-db-postgreSQL/Storage"
+)
 
 func main() {
 	Storage.NewPostgresDB()
+	storageProducto := Storage.NewPsqlProduct(Storage.Pool())
+	ServicioProducto := Productos.NewService(storageProducto)
+
+	if err := ServicioProducto.Migrate(); err != nil {
+		log.Fatalf("Producto.Migrate: %v", err)
+	}
 }
 
 //Para subir nuestro proyecto a github
